@@ -47,8 +47,11 @@ def load_numbeo_wide():
 
     col_subset = df[df["index_type"] == "cost_of_living"].copy()
     exclude = {"rank", "city", "country", "index_type"}
-    keep_cols = ["city", "country"] + [c for c in col_subset.columns if c not in exclude]
-    frames.append(("cost_of_living", col_subset[keep_cols]))
+    col_value_cols = [c for c in col_subset.columns if c not in exclude]
+    col_data = {"city": col_subset["city"].values, "country": col_subset["country"].values}
+    for c in col_value_cols:
+        col_data[c] = col_subset[c].values
+    frames.append(("cost_of_living", pd.DataFrame(col_data)))
 
     for index_type, keywords in INDEX_TYPE_KEYWORDS.items():
         subset = df[df["index_type"] == index_type].copy()
@@ -61,18 +64,28 @@ def load_numbeo_wide():
             continue
 
         out_name = f"{index_type}_index"
-        renamed = subset[["city", "country", col]].rename(columns={col: out_name})
+        values = subset[col].values
 
         if index_type == "safety" and "crime" in col:
-            renamed[out_name] = 100 - renamed[out_name]
+            values = 100 - values
             log.info("Inverted crime index to safety index (higher = safer)")
 
+        renamed = pd.DataFrame({
+            "city": subset["city"].values,
+            "country": subset["country"].values,
+            out_name: values,
+        })
         frames.append((index_type, renamed))
 
     master = frames[0][1]
     for name, frame in frames[1:]:
         master = master.merge(frame, on=["city", "country"], how="outer")
-        log.info("Merged %s -> %d rows so far", name, len(master))
+        log.info("Merged %s -> %d rows, %d cols so far", name, len(master), len(master.columns))
+
+    if master.columns.duplicated().any():
+        dupes = master.columns[master.columns.duplicated()].tolist()
+        log.warning("Dropping duplicate columns: %s", dupes)
+        master = master.loc[:, ~master.columns.duplicated()]
 
     return master
 
