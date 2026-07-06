@@ -1,4 +1,0 @@
-  File "C:\Users\Jesse\Projects\elsewhere\pipeline\scrape_numbeo.py", line 8
-    import io`r`nimport logging
-             ^
-SyntaxError: invalid syntax
