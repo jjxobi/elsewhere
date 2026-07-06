@@ -1,0 +1,75 @@
+country,nz_visa_free_or_simple
+United States,TRUE
+Canada,TRUE
+United Kingdom,TRUE
+Ireland,TRUE
+Australia,TRUE
+Germany,TRUE
+France,TRUE
+Spain,TRUE
+Italy,TRUE
+Portugal,TRUE
+Netherlands,TRUE
+Belgium,TRUE
+Switzerland,TRUE
+Austria,TRUE
+Greece,TRUE
+Sweden,TRUE
+Norway,TRUE
+Denmark,TRUE
+Finland,TRUE
+Iceland,TRUE
+Poland,TRUE
+Czechia,TRUE
+Czech Republic,TRUE
+Hungary,TRUE
+Croatia,TRUE
+Slovenia,TRUE
+Slovakia,TRUE
+Estonia,TRUE
+Latvia,TRUE
+Lithuania,TRUE
+Malta,TRUE
+Cyprus,TRUE
+Luxembourg,TRUE
+Romania,TRUE
+Bulgaria,TRUE
+Japan,TRUE
+South Korea,TRUE
+Singapore,TRUE
+Hong Kong,TRUE
+Taiwan,TRUE
+Malaysia,TRUE
+Thailand,TRUE
+Vietnam,FALSE
+Philippines,TRUE
+Indonesia,FALSE
+Mexico,TRUE
+Brazil,TRUE
+Argentina,TRUE
+Chile,TRUE
+Colombia,FALSE
+Peru,TRUE
+Uruguay,TRUE
+Costa Rica,TRUE
+Panama,TRUE
+Israel,TRUE
+United Arab Emirates,TRUE
+South Africa,FALSE
+Fiji,TRUE
+Samoa,TRUE
+Tonga,TRUE
+Vanuatu,TRUE
+Cook Islands,TRUE
+Niue,TRUE
+Turkey,FALSE
+Georgia,TRUE
+Serbia,TRUE
+Montenegro,TRUE
+North Macedonia,TRUE
+Albania,TRUE
+Bosnia and Herzegovina,FALSE
+Andorra,TRUE
+Monaco,TRUE
+San Marino,TRUE
+Liechtenstein,TRUE
