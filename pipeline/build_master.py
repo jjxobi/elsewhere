@@ -1,7 +1,18 @@
 """
 build_master.py
 
-Joins all scraped/fetched sources into the final master_data.csv.
+Joins all scraped/fetched sources into the final master_data.csv that
+the Tableau dashboard reads:
+
+  - data/raw/numbeo_combined.csv     (6 index types, long format)
+  - data/raw/worldbank_ppp.csv       (country-level PPP rates)
+  - data/raw/internet_speed_fixed.csv (country-level, from Wikipedia/Speedtest)
+  - data/raw/internet_speed_mobile.csv
+  - data/raw/cities_geocoded.csv     (city/country -> lat/lon)
+  - data/visa_list_nz.csv            (static, manually curated)
+
+Output:
+  data/master_data.csv
 """
 
 import logging
@@ -16,6 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 RAW_DIR = BASE_DIR / "data" / "raw"
 DATA_DIR = BASE_DIR / "data"
 
+# Numbeo index types we don't already have a well-named column for -
+# each of these tables should have ONE primary index column. We find
+# it by keyword match since Numbeo's exact naming varies by page.
 INDEX_TYPE_KEYWORDS = {
     "quality_of_life": ["quality_of_life"],
     "safety": ["crime", "safety"],
@@ -30,6 +44,7 @@ def find_index_column(columns, keywords):
         for kw in keywords:
             if kw in col and "index" in col:
                 return col
+    # fallback: any column containing the keyword
     for col in columns:
         for kw in keywords:
             if kw in col:
@@ -37,7 +52,7 @@ def find_index_column(columns, keywords):
     return None
 
 
-def load_numbeo_wide():
+def load_numbeo_wide() -> pd.DataFrame:
     path = RAW_DIR / "numbeo_combined.csv"
     if not path.exists():
         raise FileNotFoundError(f"{path} not found — run scrape_numbeo.py first.")
@@ -46,6 +61,7 @@ def load_numbeo_wide():
     frames = []
 
     col_subset = df[df["index_type"] == "cost_of_living"].copy()
+    col_subset = col_subset.dropna(axis=1, how="all")
     exclude = {"rank", "city", "country", "index_type"}
     col_value_cols = [c for c in col_subset.columns if c not in exclude]
     col_data = {"city": col_subset["city"].values, "country": col_subset["country"].values}
@@ -55,12 +71,16 @@ def load_numbeo_wide():
 
     for index_type, keywords in INDEX_TYPE_KEYWORDS.items():
         subset = df[df["index_type"] == index_type].copy()
+        subset = subset.dropna(axis=1, how="all")
         if subset.empty:
             log.warning("No rows found for index_type '%s' — skipping", index_type)
             continue
         col = find_index_column(subset.columns, keywords)
         if col is None:
-            log.warning("Could not find index column for '%s' (columns: %s) — skipping", index_type, list(subset.columns))
+            log.warning(
+                "Could not find index column for '%s' (columns: %s) — skipping",
+                index_type, list(subset.columns),
+            )
             continue
 
         out_name = f"{index_type}_index"
@@ -90,7 +110,7 @@ def load_numbeo_wide():
     return master
 
 
-def merge_worldbank(master):
+def merge_worldbank(master: pd.DataFrame) -> pd.DataFrame:
     path = RAW_DIR / "worldbank_ppp.csv"
     if not path.exists():
         log.warning("%s not found — skipping PPP merge", path)
@@ -102,7 +122,7 @@ def merge_worldbank(master):
     return merged
 
 
-def merge_internet_speed(master):
+def merge_internet_speed(master: pd.DataFrame) -> pd.DataFrame:
     fixed_path = RAW_DIR / "internet_speed_fixed.csv"
     if not fixed_path.exists():
         log.warning("%s not found — skipping internet speed merge", fixed_path)
@@ -111,9 +131,12 @@ def merge_internet_speed(master):
     fixed = pd.read_csv(fixed_path)
     country_col = next((c for c in fixed.columns if "countr" in c), fixed.columns[0])
     speed_col = next((c for c in fixed.columns if "download" in c), fixed.columns[-1])
-    fixed = fixed[[country_col, speed_col]].rename(columns={country_col: "country", speed_col: "internet_speed_mbps"})
+    fixed = fixed[[country_col, speed_col]].rename(
+        columns={country_col: "country", speed_col: "internet_speed_mbps"}
+    )
     fixed["internet_speed_mbps"] = pd.to_numeric(
-        fixed["internet_speed_mbps"].astype(str).str.extract(r"([\d.]+)")[0], errors="coerce"
+        fixed["internet_speed_mbps"].astype(str).str.extract(r"([\d.]+)")[0],
+        errors="coerce",
     )
 
     merged = master.merge(fixed, on="country", how="left")
@@ -122,7 +145,7 @@ def merge_internet_speed(master):
     return merged
 
 
-def merge_geocoding(master):
+def merge_geocoding(master: pd.DataFrame) -> pd.DataFrame:
     path = RAW_DIR / "cities_geocoded.csv"
     if not path.exists():
         log.warning("%s not found — skipping geocoding merge", path)
@@ -134,7 +157,7 @@ def merge_geocoding(master):
     return merged
 
 
-def merge_visa_list(master):
+def merge_visa_list(master: pd.DataFrame) -> pd.DataFrame:
     path = DATA_DIR / "visa_list_nz.csv"
     if not path.exists():
         log.warning("%s not found — skipping visa list merge", path)
@@ -148,7 +171,7 @@ def merge_visa_list(master):
     return merged
 
 
-def build_master():
+def build_master() -> pd.DataFrame:
     log.info("Building master dataset...")
     master = load_numbeo_wide()
     log.info("Base (Numbeo wide): %d city rows", len(master))
