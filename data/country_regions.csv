@@ -1,0 +1,127 @@
+country,continent,region
+United States,North America,North America
+Canada,North America,North America
+Mexico,North America,Central America
+Guatemala,North America,Central America
+Costa Rica,North America,Central America
+Panama,North America,Central America
+Honduras,North America,Central America
+El Salvador,North America,Central America
+Nicaragua,North America,Central America
+Belize,North America,Central America
+Cuba,North America,Caribbean
+Dominican Republic,North America,Caribbean
+Jamaica,North America,Caribbean
+Trinidad and Tobago,North America,Caribbean
+Brazil,South America,South America
+Argentina,South America,South America
+Chile,South America,South America
+Colombia,South America,South America
+Peru,South America,South America
+Uruguay,South America,South America
+Ecuador,South America,South America
+Bolivia,South America,South America
+Paraguay,South America,South America
+Venezuela,South America,South America
+United Kingdom,Europe,Northern Europe
+Ireland,Europe,Northern Europe
+Sweden,Europe,Northern Europe
+Norway,Europe,Northern Europe
+Denmark,Europe,Northern Europe
+Finland,Europe,Northern Europe
+Iceland,Europe,Northern Europe
+Germany,Europe,Western Europe
+France,Europe,Western Europe
+Netherlands,Europe,Western Europe
+Belgium,Europe,Western Europe
+Switzerland,Europe,Western Europe
+Austria,Europe,Western Europe
+Luxembourg,Europe,Western Europe
+Spain,Europe,Southern Europe
+Italy,Europe,Southern Europe
+Portugal,Europe,Southern Europe
+Greece,Europe,Southern Europe
+Malta,Europe,Southern Europe
+Cyprus,Europe,Southern Europe
+Croatia,Europe,Southern Europe
+Slovenia,Europe,Southern Europe
+Poland,Europe,Eastern Europe
+Czechia,Europe,Eastern Europe
+Czech Republic,Europe,Eastern Europe
+Hungary,Europe,Eastern Europe
+Romania,Europe,Eastern Europe
+Bulgaria,Europe,Eastern Europe
+Slovakia,Europe,Eastern Europe
+Ukraine,Europe,Eastern Europe
+Serbia,Europe,Eastern Europe
+Estonia,Europe,Eastern Europe
+Latvia,Europe,Eastern Europe
+Lithuania,Europe,Eastern Europe
+Belarus,Europe,Eastern Europe
+Moldova,Europe,Eastern Europe
+Albania,Europe,Eastern Europe
+Bosnia and Herzegovina,Europe,Eastern Europe
+North Macedonia,Europe,Eastern Europe
+Montenegro,Europe,Eastern Europe
+Russia,Europe,Eastern Europe
+Georgia,Asia,Eastern Europe
+Turkey,Asia,Middle East
+Israel,Asia,Middle East
+United Arab Emirates,Asia,Middle East
+Saudi Arabia,Asia,Middle East
+Qatar,Asia,Middle East
+Kuwait,Asia,Middle East
+Jordan,Asia,Middle East
+Lebanon,Asia,Middle East
+Iran,Asia,Middle East
+Iraq,Asia,Middle East
+Oman,Asia,Middle East
+Bahrain,Asia,Middle East
+China,Asia,East Asia
+Japan,Asia,East Asia
+South Korea,Asia,East Asia
+Taiwan,Asia,East Asia
+Hong Kong,Asia,East Asia
+Mongolia,Asia,East Asia
+Thailand,Asia,Southeast Asia
+Vietnam,Asia,Southeast Asia
+Singapore,Asia,Southeast Asia
+Malaysia,Asia,Southeast Asia
+Indonesia,Asia,Southeast Asia
+Philippines,Asia,Southeast Asia
+Cambodia,Asia,Southeast Asia
+Myanmar,Asia,Southeast Asia
+Laos,Asia,Southeast Asia
+India,Asia,South Asia
+Pakistan,Asia,South Asia
+Bangladesh,Asia,South Asia
+Sri Lanka,Asia,South Asia
+Nepal,Asia,South Asia
+Egypt,Africa,North Africa
+Morocco,Africa,North Africa
+Tunisia,Africa,North Africa
+Algeria,Africa,North Africa
+Libya,Africa,North Africa
+South Africa,Africa,Sub-Saharan Africa
+Nigeria,Africa,Sub-Saharan Africa
+Kenya,Africa,Sub-Saharan Africa
+Ghana,Africa,Sub-Saharan Africa
+Ethiopia,Africa,Sub-Saharan Africa
+Tanzania,Africa,Sub-Saharan Africa
+Uganda,Africa,Sub-Saharan Africa
+Zimbabwe,Africa,Sub-Saharan Africa
+Zambia,Africa,Sub-Saharan Africa
+Namibia,Africa,Sub-Saharan Africa
+Botswana,Africa,Sub-Saharan Africa
+Mauritius,Africa,Sub-Saharan Africa
+Rwanda,Africa,Sub-Saharan Africa
+Senegal,Africa,Sub-Saharan Africa
+Ivory Coast,Africa,Sub-Saharan Africa
+Cameroon,Africa,Sub-Saharan Africa
+Australia,Oceania,Oceania
+New Zealand,Oceania,Oceania
+Fiji,Oceania,Oceania
+Samoa,Oceania,Oceania
+Tonga,Oceania,Oceania
+Vanuatu,Oceania,Oceania
+Papua New Guinea,Oceania,Oceania

@@ -60,7 +60,14 @@ def load_numbeo_wide() -> pd.DataFrame:
 
     frames = []
 
+    # Cost of living: keep ALL its columns (multiple sub-indices) -
+    # build a fresh DataFrame explicitly rather than slicing, to avoid
+    # any chance of extra columns carrying through.
     col_subset = df[df["index_type"] == "cost_of_living"].copy()
+    # pd.concat unioned columns across all 6 scraped pages, so
+    # cost_of_living rows also carry all-NaN columns belonging to the
+    # OTHER pages. Drop any column that's entirely empty for this page
+    # before selecting - otherwise every other page's columns leak in.
     col_subset = col_subset.dropna(axis=1, how="all")
     exclude = {"rank", "city", "country", "index_type"}
     col_value_cols = [c for c in col_subset.columns if c not in exclude]
@@ -69,9 +76,11 @@ def load_numbeo_wide() -> pd.DataFrame:
         col_data[c] = col_subset[c].values
     frames.append(("cost_of_living", pd.DataFrame(col_data)))
 
+    # Other index types: extract exactly ONE primary column, built as a
+    # brand new 3-column DataFrame (city, country, value) - no chance
+    # of stray columns from the source page leaking through.
     for index_type, keywords in INDEX_TYPE_KEYWORDS.items():
         subset = df[df["index_type"] == index_type].copy()
-        subset = subset.dropna(axis=1, how="all")
         if subset.empty:
             log.warning("No rows found for index_type '%s' — skipping", index_type)
             continue
@@ -86,6 +95,7 @@ def load_numbeo_wide() -> pd.DataFrame:
         out_name = f"{index_type}_index"
         values = subset[col].values
 
+        # Invert crime -> safety so higher always means better/safer
         if index_type == "safety" and "crime" in col:
             values = 100 - values
             log.info("Inverted crime index to safety index (higher = safer)")
@@ -97,11 +107,15 @@ def load_numbeo_wide() -> pd.DataFrame:
         })
         frames.append((index_type, renamed))
 
+    # Merge all frames on (city, country)
     master = frames[0][1]
     for name, frame in frames[1:]:
         master = master.merge(frame, on=["city", "country"], how="outer")
         log.info("Merged %s -> %d rows, %d cols so far", name, len(master), len(master.columns))
 
+    # Safety net: if any duplicate-named columns still slipped through
+    # (shouldn't happen now, but this guarantees a clean result), keep
+    # only the first occurrence of each column name.
     if master.columns.duplicated().any():
         dupes = master.columns[master.columns.duplicated()].tolist()
         log.warning("Dropping duplicate columns: %s", dupes)
@@ -129,11 +143,13 @@ def merge_internet_speed(master: pd.DataFrame) -> pd.DataFrame:
         return master
 
     fixed = pd.read_csv(fixed_path)
+    # Expect columns like: country/territory, mediandownloadspeed(mbit/s)
     country_col = next((c for c in fixed.columns if "countr" in c), fixed.columns[0])
     speed_col = next((c for c in fixed.columns if "download" in c), fixed.columns[-1])
     fixed = fixed[[country_col, speed_col]].rename(
         columns={country_col: "country", speed_col: "internet_speed_mbps"}
     )
+    # Speed values may have footnote markers etc - coerce to numeric
     fixed["internet_speed_mbps"] = pd.to_numeric(
         fixed["internet_speed_mbps"].astype(str).str.extract(r"([\d.]+)")[0],
         errors="coerce",
@@ -171,6 +187,22 @@ def merge_visa_list(master: pd.DataFrame) -> pd.DataFrame:
     return merged
 
 
+def merge_regions(master: pd.DataFrame) -> pd.DataFrame:
+    path = DATA_DIR / "country_regions.csv"
+    if not path.exists():
+        log.warning("%s not found — skipping region merge", path)
+        return master
+    regions = pd.read_csv(path)
+    merged = master.merge(regions, on="country", how="left")
+    missing = merged[merged["region"].isna()]["country"].unique()
+    if len(missing):
+        log.warning("%d countries have no region mapping: %s", len(missing), list(missing))
+        merged["continent"] = merged["continent"].fillna("Other")
+        merged["region"] = merged["region"].fillna("Other")
+    log.info("Merged region/continent data")
+    return merged
+
+
 def build_master() -> pd.DataFrame:
     log.info("Building master dataset...")
     master = load_numbeo_wide()
@@ -180,12 +212,15 @@ def build_master() -> pd.DataFrame:
     master = merge_internet_speed(master)
     master = merge_geocoding(master)
     master = merge_visa_list(master)
+    master = merge_regions(master)
 
+    # Drop rows with no city name (can happen from outer-join edge cases)
     before = len(master)
     master = master.dropna(subset=["city"])
     if len(master) < before:
         log.info("Dropped %d rows with no city name", before - len(master))
 
+    # Deduplicate, keeping first occurrence
     master = master.drop_duplicates(subset=["city", "country"])
 
     out_path = DATA_DIR / "master_data.csv"
