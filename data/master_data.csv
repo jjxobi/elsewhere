@@ -23,7 +23,7 @@ Algiers,Algeria,29.3,4.7,18.0,35.4,20.3,35.0,,49.3,57.2,67.6,,43.326166802351,59
 Alicante,Spain,52.7,23.2,39.1,57.2,55.1,92.3,,63.6,80.3,,,0.556506,277.98,38.3436365,-0.4881708,True,Europe,Southern Europe
 Alice Springs,Australia,,,,,,,,33.6,,,,1.337468,154.09,-23.6983884,133.8812885,True,Oceania,Oceania
 Allahabad,India,,,,,,,,,,88.9,,20.4553387219722,60.85,25.4381302,81.8338005,False,Asia,South Asia
-Almaty,Kazakhstan,40.2,16.8,29.5,41.8,42.4,51.1,97.2,47.1,50.9,78.8,,152.415361023158,88.1,43.2363924,76.9457275,False,Other,Other
+Almaty,Kazakhstan,40.2,16.8,29.5,41.8,42.4,51.1,97.2,47.1,50.9,78.8,,152.415361023158,88.1,43.2363924,76.9457275,False,Asia,Central Asia
 Amadora,Portugal,,,,,,,,45.8,,,,0.513201,243.84,38.758959,-9.2365233,True,Europe,Southern Europe
 Amman,Jordan,46.2,8.7,29.0,42.7,49.6,45.8,120.8,62.7,65.6,76.3,,0.304214246597533,194.1,31.9515694,35.9239625,False,Asia,Middle East
 Amritsar,India,,,,,,,,,,84.3,,20.4553387219722,60.85,31.6356659,74.8787496,False,Asia,South Asia
@@ -35,7 +35,7 @@ Antalya,Turkey,41.4,12.5,28.2,40.9,43.3,63.6,160.5,70.9,73.7,44.7,,,80.02,36.886
 Antwerp,Belgium,72.0,23.5,49.7,74.0,82.8,111.7,164.6,60.2,79.7,58.2,,0.703466,140.97,51.2211097,4.3997081,True,Europe,Western Europe
 "Arlington, VA",United States,82.0,61.4,72.5,94.9,85.1,166.6,,,,,,1.0,309.8,,,True,North America,North America
 "Asheville, NC",United States,,,,,,,,,,,,1.0,309.8,35.595363,-82.5508407,True,North America,North America
-Astana (Nur-Sultan),Kazakhstan,34.6,13.2,24.8,37.4,33.1,61.0,127.1,66.7,67.3,55.1,,152.415361023158,88.1,51.1278362,71.4413281,False,Other,Other
+Astana (Nur-Sultan),Kazakhstan,34.6,13.2,24.8,37.4,33.1,61.0,127.1,66.7,67.3,55.1,,152.415361023158,88.1,51.1278362,71.4413281,False,Asia,Central Asia
 Asuncion,Paraguay,34.7,12.3,24.4,36.9,33.4,47.8,,44.8,63.8,,,2612.65263745484,118.56,-25.2800459,-57.6343814,False,South America,South America
 Athens,Greece,57.8,17.9,39.5,57.4,61.9,62.2,127.9,45.0,58.4,55.6,,0.506626,94.29,37.9755648,23.7348324,True,Europe,Southern Europe
 "Atlanta, GA",United States,79.0,43.2,62.6,86.3,92.5,150.4,174.8,35.7,65.9,45.1,,1.0,309.8,33.7544657,-84.3898151,True,North America,North America
@@ -45,14 +45,14 @@ Augsburg,Germany,71.6,25.3,50.3,68.6,70.1,115.5,,,,,,0.701054,103.72,48.3690341,
 Aveiro,Portugal,49.3,22.5,37.0,50.4,45.9,72.7,,,,,,0.513201,243.84,40.640496,-8.6537841,True,Europe,Southern Europe
 Baghdad,Iraq,35.3,11.7,24.5,31.0,31.9,48.2,,46.8,37.8,,,535.22554911293,44.19,33.3061701,44.3872213,False,Asia,Middle East
 Baguio,Philippines,,,,,,,,,,71.6,,19.2473611347953,109.86,16.411986,120.5933878,True,Asia,Southeast Asia
-Baku,Azerbaijan,33.9,11.5,23.6,33.8,38.0,45.8,115.8,69.9,48.2,74.1,,0.51227663604586,91.37,40.3755885,49.8328009,False,Other,Other
+Baku,Azerbaijan,33.9,11.5,23.6,33.8,38.0,45.8,115.8,69.9,48.2,74.1,,0.51227663604586,91.37,40.3755885,49.8328009,False,Asia,Middle East
 Bali,Indonesia,34.8,29.5,32.4,47.3,23.7,12.4,,49.0,,79.0,,4815.77343325049,45.91,-8.2271303,115.1919203,False,Asia,Southeast Asia
 Ballarat,Australia,,,,,,,,44.1,,,,1.337468,154.09,-37.5623013,143.8605645,True,Oceania,Oceania
 "Baltimore, MD",United States,74.8,33.5,55.8,84.6,74.5,145.8,169.9,28.9,72.2,,,1.0,309.8,39.2908816,-76.610759,True,North America,North America
 Bandung,Indonesia,23.1,4.9,14.8,32.2,13.3,35.8,,,,69.4,,4815.77343325049,45.91,-6.9218457,107.6070833,False,Asia,Southeast Asia
 Bangalore,India,21.9,8.9,15.9,26.4,19.4,93.6,125.0,46.3,65.4,82.5,,20.4553387219722,60.85,12.9767936,77.590082,False,Asia,South Asia
 Bangkok,Thailand,44.2,18.2,32.3,52.8,29.0,35.5,79.5,61.6,77.3,77.7,,10.633894352836,279.65,13.7524938,100.4935089,True,Asia,Southeast Asia
-Banja Luka,Bosnia And Herzegovina,44.3,9.4,28.3,45.4,43.1,59.4,136.2,,46.1,,,,,44.7720845,17.1917651,False,Other,Other
+Banja Luka,Bosnia And Herzegovina,44.3,9.4,28.3,45.4,43.1,59.4,136.2,,46.1,,,,,44.7720845,17.1917651,False,Europe,Eastern Europe
 Barcelona,Spain,60.8,35.7,49.3,62.5,63.0,89.0,147.4,47.9,76.7,62.8,,0.556506,277.98,41.3825802,2.177073,True,Europe,Southern Europe
 Bari,Italy,57.3,19.9,40.2,58.6,57.2,89.1,,50.2,,,,0.601949,117.11,41.1257843,16.8620293,True,Europe,Southern Europe
 Barranquilla,Colombia,38.9,9.7,25.5,36.7,40.4,39.4,,,,,,1425.433859,214.3,11.0101922,-74.8231794,False,South America,South America
@@ -73,7 +73,7 @@ Bhubaneswar,India,18.9,3.5,11.8,23.5,13.9,57.6,,,,47.9,,20.4553387219722,60.85,2
 Bilbao,Spain,55.7,31.2,44.5,53.0,62.6,97.6,,51.2,,,,0.556506,277.98,43.2630018,-2.9350039,True,Europe,Southern Europe
 Birmingham,United Kingdom,72.1,30.5,53.0,67.9,77.2,142.7,170.6,36.0,70.8,51.0,,0.660709,172.24,52.4948994,-1.8518439,True,Europe,Northern Europe
 "Birmingham, AL",United States,69.2,38.1,54.9,82.6,60.0,104.6,,,,,,1.0,309.8,33.5206824,-86.8024326,True,North America,North America
-Bishkek,Kyrgyzstan,29.9,12.9,22.1,31.0,27.0,41.0,,,,75.6,,,87.14,42.8761424,74.6036724,False,Other,Other
+Bishkek,Kyrgyzstan,29.9,12.9,22.1,31.0,27.0,41.0,,,,75.6,,,87.14,42.8761424,74.6036724,False,Asia,Central Asia
 Bitola,North Macedonia,,,,,,,,,,58.2,,19.4832195643769,56.88,41.0316005,21.3302511,True,Europe,Eastern Europe
 Bogota,Colombia,40.2,15.1,28.7,43.0,35.2,45.8,102.1,33.3,66.0,69.4,,1425.433859,214.3,4.6533817,-74.0836331,False,South America,South America
 "Boise, ID",United States,70.1,33.3,53.2,78.1,72.5,155.2,184.3,61.6,64.5,36.5,,1.0,309.8,43.6166163,-116.200886,True,North America,North America
@@ -154,7 +154,7 @@ Cuenca,Ecuador,30.8,9.8,21.2,35.4,27.1,48.0,151.3,54.2,81.1,46.0,,0.422329283911
 Curitiba,Brazil,36.3,9.7,24.0,34.6,35.7,49.8,144.2,40.5,67.0,30.9,,2.44559278607045,221.53,-25.4295963,-49.2712724,True,South America,South America
 Da Nang,Vietnam,27.7,11.7,20.3,34.2,17.0,32.0,,,,,,,281.72,16.068501,108.2240242,False,Asia,Southeast Asia
 "Dallas, TX",United States,76.9,45.5,62.5,79.8,79.7,143.1,175.9,48.4,66.7,41.1,,1.0,309.8,,,True,North America,North America
-Damascus,Syria,34.7,9.6,23.1,30.8,39.3,4.9,,31.3,35.0,,,,4.24,33.5130695,36.3095814,False,Other,Other
+Damascus,Syria,34.7,9.6,23.1,30.8,39.3,4.9,,31.3,35.0,,,,4.24,33.5130695,36.3095814,False,Asia,Middle East
 Dar es Salaam,Tanzania,27.8,12.3,20.7,27.6,21.2,25.1,,,,,,725.254517758729,23.84,-6.8160837,39.2803583,False,Africa,Sub-Saharan Africa
 Darmstadt,Germany,73.2,26.7,51.9,71.9,70.6,128.3,,,,,,0.701054,103.72,49.872775,8.651177,True,Europe,Western Europe
 Darwin,Australia,,,,,,,,36.8,,23.4,,1.337468,154.09,-12.46044,130.8410469,True,Oceania,Oceania
@@ -175,7 +175,7 @@ Dublin,Ireland,77.2,59.7,69.2,75.5,85.1,103.8,151.2,45.9,51.3,41.4,,0.740333,220
 Duisburg,Germany,71.8,16.2,46.3,70.0,64.6,121.4,,,,,,0.701054,103.72,51.434999,6.759562,True,Europe,Western Europe
 Dundee,United Kingdom,67.4,22.6,46.8,72.0,70.3,128.2,,,,,,0.660709,172.24,56.4605938,-2.97019,True,Europe,Northern Europe
 Durban,South Africa,37.8,11.9,25.9,36.9,31.9,88.9,146.5,19.5,58.3,53.2,,7.31868804459223,48.9,-29.861825,31.009909,False,Africa,Sub-Saharan Africa
-Dushanbe,Tajikistan,28.7,11.4,20.8,37.5,20.0,41.7,,,,,,2.57264357607453,45.1,38.5856814,68.760331,False,Other,Other
+Dushanbe,Tajikistan,28.7,11.4,20.8,37.5,20.0,41.7,,,,,,2.57264357607453,45.1,38.5856814,68.760331,False,Asia,Central Asia
 Dusseldorf,Germany,72.9,29.4,52.9,69.8,68.2,132.1,195.9,65.9,73.4,28.8,,0.701054,103.72,51.2254018,6.7763137,True,Europe,Western Europe
 Edinburgh,United Kingdom,75.3,36.9,57.7,71.7,83.9,110.8,191.6,69.7,75.9,28.0,,0.660709,172.24,55.9533456,-3.1883749,True,Europe,Northern Europe
 Edmonton,Canada,63.3,23.9,45.2,70.5,66.2,136.3,181.5,53.2,76.7,28.6,,1.139727,277.7,53.5462055,-113.491241,True,North America,North America
@@ -206,7 +206,7 @@ Gdynia,Poland,50.5,16.9,35.1,44.8,49.9,109.1,,,,,,1.920474,223.25,54.5233304,18.
 Geneva,Switzerland,113.0,64.1,90.6,110.8,116.3,151.1,194.9,70.5,69.3,26.5,,0.999013,292.56,46.2017559,6.1466014,True,Europe,Western Europe
 Genoa,Italy,63.3,19.1,43.0,69.6,67.4,93.9,161.5,54.3,66.5,50.5,,0.601949,117.11,44.40726,8.9338624,True,Europe,Southern Europe
 Gent,Belgium,72.6,26.2,51.3,71.8,87.4,132.4,203.9,75.2,80.2,35.8,,0.703466,140.97,51.0538286,3.7250121,True,Europe,Western Europe
-George Town,Cayman Islands,118.0,77.3,99.3,133.5,102.8,143.6,,,,,,0.943347350241178,,19.2953549,-81.3807776,False,Other,Other
+George Town,Cayman Islands,118.0,77.3,99.3,133.5,102.8,143.6,,,,,,0.943347350241178,,19.2953549,-81.3807776,False,North America,Caribbean
 Ghaziabad,India,,,,,,,,41.8,,91.8,,20.4553387219722,60.85,28.7749966,77.4586967,False,Asia,South Asia
 Giza,Egypt,21.1,3.7,13.1,21.2,17.4,19.2,,,,,,,92.5,29.9870753,31.2118063,False,Africa,North Africa
 Glasgow,United Kingdom,69.8,33.4,53.1,69.2,70.9,117.4,187.0,55.1,78.4,33.4,,0.660709,172.24,55.861155,-4.2501687,True,Europe,Northern Europe
@@ -242,7 +242,7 @@ Helsinki,Finland,75.2,30.3,54.6,74.2,80.7,105.9,194.7,74.9,80.1,12.5,,0.770345,1
 Heraklion,Greece,55.7,15.7,37.3,54.2,55.0,56.9,,,,,,0.506626,94.29,35.33908,25.1332843,True,Europe,Southern Europe
 Ho Chi Minh City,Vietnam,29.5,13.0,21.9,35.5,17.1,41.2,75.1,50.2,62.9,92.1,,,281.72,10.7737261,106.7166008,False,Asia,Southeast Asia
 Hobart,Australia,75.1,32.9,55.7,86.1,72.3,136.6,191.5,65.9,,28.5,,1.337468,154.09,-42.8825088,147.3281233,True,Oceania,Oceania
-Hong Kong,Hong Kong (China),77.9,59.5,69.5,78.8,48.0,87.8,120.7,78.2,66.5,66.2,,,,22.2818333,114.1582831,False,Other,Other
+Hong Kong,Hong Kong (China),77.9,59.5,69.5,78.8,48.0,87.8,120.7,78.2,66.5,66.2,,,,22.2818333,114.1582831,False,Asia,East Asia
 "Honolulu, HI",United States,107.7,64.6,87.9,132.4,112.8,86.0,157.5,52.7,72.5,37.1,,1.0,309.8,21.304547,-157.855676,True,North America,North America
 "Houston, TX",United States,66.5,40.1,54.4,72.5,71.1,147.5,168.5,37.1,69.4,56.5,,1.0,309.8,29.7589382,-95.3676974,True,North America,North America
 "Huntsville, AL",United States,62.0,28.8,46.8,63.3,67.9,166.5,,,,,,1.0,309.8,34.729847,-86.5859011,True,North America,North America
@@ -268,7 +268,7 @@ Jerusalem,Israel,92.1,42.1,69.1,93.2,89.4,107.0,,64.1,72.9,,,3.456822,281.29,,,T
 Joao Pessoa,Brazil,35.6,8.0,22.9,33.0,28.0,40.5,,,,,,2.44559278607045,221.53,-7.1215981,-34.882028,True,South America,South America
 Johannesburg,South Africa,45.1,14.0,30.8,39.7,41.0,104.9,138.4,19.2,60.5,62.1,,7.31868804459223,48.9,-26.205,28.049722,False,Africa,Sub-Saharan Africa
 Johor Bahru,Malaysia,,,,,,,,51.1,,,,1.42278837661538,168.07,1.4581986,103.7649059,True,Asia,Southeast Asia
-Kabul,Afghanistan,20.6,2.7,12.4,21.1,14.0,52.3,,,,89.7,,14.7887521912564,4.93,34.5269503,69.1850584,False,Other,Other
+Kabul,Afghanistan,20.6,2.7,12.4,21.1,14.0,52.3,,,,89.7,,14.7887521912564,4.93,34.5269503,69.1850584,False,Asia,South Asia
 Kaliningrad,Russia,46.2,12.3,30.7,48.9,37.6,51.9,147.1,,69.9,,,,91.29,54.710128,20.5105838,False,Europe,Eastern Europe
 Kamloops,Canada,,,,,,,,45.5,,,,1.139727,277.7,50.6758269,-120.339415,True,North America,North America
 Kampala,Uganda,27.8,10.5,19.9,29.2,23.5,18.0,,,,,,1213.19719403414,30.25,0.3177137,32.5813539,False,Africa,Sub-Saharan Africa
@@ -435,14 +435,14 @@ Plzen,Czech Republic,52.4,15.8,35.6,55.1,42.3,101.3,186.9,,76.3,,,,92.71,49.7477
 Podgorica,Montenegro,43.1,16.5,30.9,43.3,43.7,70.2,,,50.7,,,0.355800655522619,144.78,42.4415238,19.2621081,True,Europe,Eastern Europe
 Port Elizabeth,South Africa,,,,,,,162.0,21.7,,,,7.31868804459223,48.9,-33.9618598,25.6186731,False,Africa,Sub-Saharan Africa
 Port Moresby,Papua New Guinea,,,,,,,,18.7,,,,2.27877414820342,,-9.4743301,147.1599504,False,Oceania,Oceania
-Port of Spain,Trinidad And Tobago,,,,,,,,23.7,47.6,,,,,10.6572678,-61.5180173,False,Other,Other
+Port of Spain,Trinidad And Tobago,,,,,,,,23.7,47.6,,,,,10.6572678,-61.5180173,False,North America,Caribbean
 "Portland, OR",United States,84.1,47.4,67.3,99.9,80.8,131.6,177.0,41.9,65.4,35.7,,1.0,309.8,,,True,North America,North America
 Porto,Portugal,51.5,30.1,41.7,51.0,49.4,71.0,178.3,66.2,78.7,24.5,,0.513201,243.84,41.1502195,-8.6103497,True,Europe,Southern Europe
 Porto Alegre,Brazil,35.5,9.4,23.5,36.0,33.0,41.0,119.4,29.6,64.7,56.9,,2.44559278607045,221.53,-30.0324999,-51.2303767,True,South America,South America
 Poznan,Poland,46.8,17.7,33.4,41.8,47.2,100.1,157.9,72.3,58.0,58.8,,1.920474,223.25,52.4082663,16.9335199,True,Europe,Eastern Europe
 Prague,Czech Republic,58.3,29.6,45.1,53.8,47.9,95.6,172.2,75.3,74.7,33.0,,,92.71,50.0874654,14.4212535,True,Europe,Eastern Europe
 Pretoria,South Africa,43.2,12.5,29.1,36.8,33.4,95.4,139.8,18.3,66.5,57.1,,7.31868804459223,48.9,-25.7459277,28.1879101,False,Africa,Sub-Saharan Africa
-Pristina,Kosovo (Disputed Territory),31.6,8.5,21.0,35.2,27.8,61.7,,,,,,,,,,False,Other,Other
+Pristina,Kosovo (Disputed Territory),31.6,8.5,21.0,35.2,27.8,61.7,,,,,,,,,,False,Europe,Eastern Europe
 Puebla,Mexico,,,,,,,,42.0,,,,9.751268,104.25,18.833333,-98.0,True,North America,Central America
 Puerto Vallarta,Mexico,53.3,25.8,40.7,58.4,57.9,41.8,,65.8,,56.5,,9.751268,104.25,20.6407176,-105.220306,True,North America,Central America
 Pune,India,22.4,7.0,15.3,25.8,21.0,138.7,156.8,58.7,65.6,71.3,,20.4553387219722,60.85,18.5213738,73.8545071,False,Asia,South Asia
@@ -478,7 +478,7 @@ Rostock,Germany,65.2,17.9,43.5,68.9,59.4,134.3,,,,,,0.701054,103.72,54.0886707,1
 Rostov-on-Don (Rostov-na-donu),Russia,37.1,12.1,25.6,38.4,35.3,64.3,111.1,,,,,,91.29,47.2037577,39.7324835,False,Europe,Eastern Europe
 Rotterdam,Netherlands,79.5,42.3,62.4,70.6,85.8,119.3,204.9,70.0,79.2,23.8,,0.730695,237.66,,,True,Europe,Western Europe
 "Sacramento, CA",United States,79.9,44.9,63.8,90.1,74.8,133.5,180.5,50.6,67.4,46.9,,1.0,309.8,,,True,North America,North America
-Saint Helier,Jersey,91.6,45.5,70.4,85.1,105.0,124.8,,,,,,,,,,False,Other,Other
+Saint Helier,Jersey,91.6,45.5,70.4,85.1,105.0,124.8,,,,,,,,,,False,Europe,Northern Europe
 "Saint Louis, MO",United States,76.4,29.6,54.9,96.9,70.1,142.8,177.8,29.7,69.9,,,1.0,309.8,,,True,North America,North America
 Saint Petersburg,Russia,44.2,19.3,32.7,43.4,37.3,67.4,118.5,62.5,61.6,60.9,,,91.29,59.9606739,30.1586551,False,Europe,Eastern Europe
 "Salt Lake City, UT",United States,66.7,37.6,53.3,71.7,67.4,145.1,172.6,64.4,66.9,61.7,,1.0,309.8,40.7596198,-111.886797,True,North America,North America
@@ -488,7 +488,7 @@ Salvador,Brazil,34.0,10.1,23.0,32.6,31.6,30.9,,23.5,,,,2.44559278607045,221.53,-
 "San Francisco, CA",United States,95.1,82.9,89.5,105.0,92.2,154.0,170.3,39.5,64.9,48.4,,1.0,309.8,,,True,North America,North America
 San Jose,Costa Rica,58.8,23.1,42.4,71.6,50.2,45.6,119.5,44.1,62.9,48.5,,318.841763,169.03,9.9327707,-84.0796144,True,North America,Central America
 "San Jose, CA",United States,88.5,69.7,79.9,93.6,86.0,144.3,178.2,52.0,68.0,48.4,,1.0,309.8,,,True,North America,North America
-San Juan,Puerto Rico,71.1,32.9,53.6,81.2,62.1,93.4,137.9,33.0,63.3,,,,,18.384239,-66.05344,False,Other,Other
+San Juan,Puerto Rico,71.1,32.9,53.6,81.2,62.1,93.4,137.9,33.0,63.3,,,,,18.384239,-66.05344,False,North America,Caribbean
 San Miguel de Allende,Mexico,52.8,26.3,40.6,64.8,52.1,29.4,,50.0,,55.0,,9.751268,104.25,20.9130501,-100.73566,True,North America,Central America
 San Pedro Sula,Honduras,,,,,,,,20.5,,,,11.0520529000976,92.0,15.5053535,-88.0250839,False,North America,Central America
 San Salvador,El Salvador,44.2,22.9,34.5,50.9,36.1,20.3,,46.5,,,,0.419951346710945,108.77,13.697629,-89.191156,False,North America,Central America
@@ -499,7 +499,7 @@ Santo Domingo,Dominican Republic,41.2,14.4,28.9,41.7,40.2,38.7,88.4,33.2,54.5,79
 Santos,Brazil,38.1,12.0,26.1,38.3,31.6,40.2,,,,,,2.44559278607045,221.53,-23.9609448,-46.3166316,True,South America,South America
 Sao Jose dos Campos,Brazil,37.6,11.7,25.7,41.0,34.1,57.1,,,,,,2.44559278607045,221.53,-23.1867782,-45.8854538,True,South America,South America
 Sao Paulo,Brazil,41.8,16.4,30.1,42.4,39.1,54.7,98.4,30.2,60.3,78.9,,2.44559278607045,221.53,-23.5506507,-46.6333824,True,South America,South America
-Sarajevo,Bosnia And Herzegovina,44.1,12.1,29.4,45.2,37.6,67.0,130.8,56.2,59.6,65.2,,,,43.8570713,18.4126147,False,Other,Other
+Sarajevo,Bosnia And Herzegovina,44.1,12.1,29.4,45.2,37.6,67.0,130.8,56.2,59.6,65.2,,,,43.8570713,18.4126147,False,Europe,Eastern Europe
 Saskatoon,Canada,61.9,23.7,44.4,73.0,60.4,108.8,,50.1,63.7,28.5,,1.139727,277.7,52.131802,-106.660767,True,North America,North America
 Sault Ste. Marie,Canada,,,,,,,,40.1,,,,1.139727,277.7,46.5126554,-84.3330301,True,North America,North America
 "Seattle, WA",United States,92.7,60.1,77.7,103.9,90.3,154.7,182.7,44.7,66.6,38.8,,1.0,309.8,,,True,North America,North America
@@ -546,7 +546,7 @@ Tangier,Morocco,36.8,10.7,24.8,39.1,30.2,38.7,,,,,,3.90232278078571,56.22,35.769
 Targu Mures,Romania,36.9,9.0,24.1,37.5,36.9,81.6,,,,,,1.81497330738497,283.06,46.5446253,24.561196,True,Europe,Eastern Europe
 Tarragona,Spain,52.9,20.0,37.8,55.9,54.6,103.4,,,,,,0.556506,277.98,41.1172364,1.2546057,True,Europe,Southern Europe
 Tartu,Estonia,58.2,14.6,38.2,53.6,67.1,96.3,,77.4,,,,0.572987,95.32,58.3779528,26.7290023,True,Europe,Eastern Europe
-Tashkent,Uzbekistan,31.5,13.5,23.2,35.3,28.0,55.2,139.0,74.2,65.7,60.2,,3030.49254994173,93.35,41.3123363,69.2787079,False,Other,Other
+Tashkent,Uzbekistan,31.5,13.5,23.2,35.3,28.0,55.2,139.0,74.2,65.7,60.2,,3030.49254994173,93.35,41.3123363,69.2787079,False,Asia,Central Asia
 Tbilisi,Georgia,39.3,15.2,28.2,41.2,40.1,42.7,119.1,74.0,55.4,71.9,,0.867549901216465,44.73,41.6934591,44.8014495,True,Asia,Eastern Europe
 Tehran,Iran,23.1,10.7,17.4,24.9,16.1,24.2,71.3,42.8,53.3,80.3,,,26.0,35.6892523,51.3896004,False,Asia,Middle East
 Tel Aviv-Yafo,Israel,104.5,49.8,79.4,97.2,107.8,102.1,160.8,73.8,73.9,46.5,,3.456822,281.29,32.0852997,34.7818064,True,Asia,Middle East
@@ -613,7 +613,7 @@ Wuhan,China,32.5,7.9,21.2,40.0,21.2,99.1,,,,,,3.64070923693376,206.91,30.578891,
 Xi'an,China,27.5,8.0,18.6,33.5,17.7,106.7,,,,,,3.64070923693376,206.91,34.261004,108.9423363,False,Asia,East Asia
 Yangon,Myanmar,,,,,,,,,,90.5,,434.642184750736,30.94,16.7967129,96.1609916,False,Asia,Southeast Asia
 Yekaterinburg,Russia,42.8,18.8,31.8,41.6,44.7,55.2,97.3,56.6,53.6,69.6,,,91.29,56.8382071,60.6007886,False,Europe,Eastern Europe
-Yerevan,Armenia,43.3,16.9,31.2,40.3,44.4,40.1,123.7,77.9,60.1,60.9,,148.585343699986,84.16,40.1777112,44.5126233,False,Other,Other
+Yerevan,Armenia,43.3,16.9,31.2,40.3,44.4,40.1,123.7,77.9,60.1,60.9,,148.585343699986,84.16,40.1777112,44.5126233,False,Asia,Middle East
 Zagreb,Croatia,55.2,19.1,38.6,58.2,53.3,93.1,176.1,78.4,64.8,35.5,,0.429571541796623,136.75,45.8130967,15.9772795,True,Europe,Southern Europe
 Zaragoza (Saragossa),Spain,,,,,,,,73.8,,,,0.556506,277.98,41.6516965,-0.7838859,True,Europe,Southern Europe
 Zurich,Switzerland,125.1,74.9,102.0,127.9,124.4,150.4,193.6,75.9,68.8,26.6,,0.999013,292.56,47.3744489,8.5410422,True,Europe,Western Europe
