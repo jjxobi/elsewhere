@@ -1,6 +1,6 @@
 # Elsewhere — Global Lifestyle & Cost Intelligence Dashboard
 
-**Live dashboard:** [public.tableau.com/app/profile/jesse4370/viz/ElsewhereGlobalLifestyleCostIntelligenceDashboard/Title](https://public.tableau.com/app/profile/jesse4370/viz/ElsewhereGlobalLifestyleCostIntelligenceDashboard/Title)
+**Live dashboard:** [public.tableau.com/app/profile/jesse4370/viz/ElsewhereGlobalLifestyleCostIntelligenceDashboard_17839807135540/Title](https://public.tableau.com/app/profile/jesse4370/viz/ElsewhereGlobalLifestyleCostIntelligenceDashboard_17839807135540/Title)
 
 A parameter-driven Tableau Public dashboard that answers: *given your salary and priorities, where in the world could you live better, cheaper, or both?*
 
@@ -21,7 +21,7 @@ Every number on every page recalculates live around your own salary, home city, 
 | **World Map** | Every city colored by whether you'd be better or worse off there, given your salary |
 | **Shortlist** | Your top 30 matches, ranked, with a detail matrix showing exactly why each city scores where it does |
 | **City Deep Dive** | Head-to-head comparison of any two cities — radar chart, cost breakdown, plain-language callouts |
-| **Seoul Spotlight** | A personal case study — my own relocation question, answered with the same tooling |
+| **Seoul Spotlight** | A personal case study — the author's own relocation question, answered with the same tooling |
 | **Data Story** | Five findings from analyzing the dataset, each verified against the actual numbers (not assumed) |
 
 ## Data pipeline
@@ -71,7 +71,10 @@ This takes about 2 minutes and is worth doing after each automated data refresh,
 
 ## Methodology and honesty notes
 
+A few things worth being upfront about:
+
 - **Expatistan was planned as a supplementary data source** but the site blocks automated scraping (bot protection). Numbeo alone provides the full 618-city dataset used throughout.
+- **The Data Story findings were fact-checked against the real dataset**, not written from assumption. Several original hypotheses turned out to be wrong or imprecise once checked — for example, the "internet speed has no correlation with cost" hypothesis was revised after finding a real moderate correlation (r = 0.54), and the "Auckland is top-25% for quality of life" claim was corrected to reflect its actual 34th-percentile ranking in this dataset.
 - **The NZ visa accessibility list is a representative, manually-curated list**, not an exhaustive official source — treat it as broadly indicative rather than authoritative for actual visa planning.
 - **Automated republishing to Tableau Public isn't possible** with free tooling (see above) — data refresh is automated, publishing the updated workbook is a 2-minute manual step.
 
