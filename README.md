@@ -10,7 +10,6 @@ Every number on every page recalculates live around your own salary, home city, 
 
 - A Python data pipeline that scrapes, fetches, and joins 5 independent data sources into one clean dataset
 - Handling real-world scraping obstacles (bot-blocked sites, inconsistent page structures, rate limits) with graceful fallbacks and honest documentation of what didn't work
-- Verifying claims against actual data rather than assuming a plan is correct (several findings on the Data Story page were revised after checking the real numbers — see Methodology below)
 - A fully parameter-driven Tableau workbook: salary, home city, and comparison city all drive live recalculation across every chart
 - Free-tier tooling throughout: Python, GitHub Actions, and Tableau Public — no paid services
 
@@ -21,7 +20,7 @@ Every number on every page recalculates live around your own salary, home city, 
 | **World Map** | Every city colored by whether you'd be better or worse off there, given your salary |
 | **Shortlist** | Your top 30 matches, ranked, with a detail matrix showing exactly why each city scores where it does |
 | **City Deep Dive** | Head-to-head comparison of any two cities — radar chart, cost breakdown, plain-language callouts |
-| **Seoul Spotlight** | A personal case study — the author's own relocation question, answered with the same tooling |
+| **Seoul Spotlight** | A personal case study — my own relocation question, answered with the same tooling |
 | **Data Story** | Five findings from analyzing the dataset, each verified against the actual numbers (not assumed) |
 
 ## Data pipeline
@@ -54,14 +53,15 @@ This produces an updated `data/master_data.csv`.
 
 ## Keeping the data current
 
-**Automated (via GitHub Actions):** `.github/workflows/monthly_refresh.yml` runs on the 1st of every month, re-running the full pipeline and committing an updated `master_data.csv` automatically. You can also trigger it manually from the Actions tab.
+**Automated refresh was attempted and doesn't work:** `.github/workflows/monthly_refresh.yml` exists and is mechanically correct (permissions, current action versions, caching all verified working), but **Numbeo blocks requests from GitHub Actions' hosted-runner IP ranges** — confirmed by actually running the workflow, not assumed. This is the same fundamental issue as Expatistan's bot-blocking (documented above), just presenting as a 503 error instead of a 403. It's a network-level block that request headers can't work around. The workflow is kept in the repo for reference only.
 
-**What's NOT automated, and why:** Tableau Public doesn't support `tabcmd` (Tableau's command-line publish tool only works with paid Tableau Server/Cloud), so republishing the dashboard itself still requires a manual step:
-1. Open `tableau/elsewhere.twb` in Tableau Public Desktop
-2. Right-click the data source → **Refresh** (pulls in the latest `master_data.csv`)
-3. **File → Save to Tableau Public As...** → overwrite the existing dashboard
+**The real, working refresh process is local:**
+1. Run the full pipeline locally (commands above) — this works fine from a normal home/residential IP
+2. Commit the updated `data/master_data.csv`
+3. Open `tableau/elsewhere.twb` in Tableau Public Desktop → right-click the data source → **Refresh**
+4. **File → Save to Tableau Public As...** → overwrite the existing dashboard
 
-This takes about 2 minutes and is worth doing after each automated data refresh, or whenever you've manually added new data (see below).
+This whole cycle takes about 15-20 minutes (mostly the geocoding step, which is cached so only new cities take time) and needs to be done manually whenever you want fresh data — there wasn't a way to make this fully hands-off with free tooling.
 
 **Adding data for a new country/city manually:** if Numbeo adds coverage for a city that's missing, or you want to patch in data from another source:
 1. Add the new rows directly to `data/master_data.csv` (or, cleaner: add them to `data/raw/numbeo_combined.csv` and re-run `build_master.py` so they get processed the same way as everything else)
@@ -74,10 +74,10 @@ This takes about 2 minutes and is worth doing after each automated data refresh,
 A few things worth being upfront about:
 
 - **Expatistan was planned as a supplementary data source** but the site blocks automated scraping (bot protection). Numbeo alone provides the full 618-city dataset used throughout.
-- **The Data Story findings were fact-checked against the real dataset**, not written from assumption. Several original hypotheses turned out to be wrong or imprecise once checked — for example, the "internet speed has no correlation with cost" hypothesis was revised after finding a real moderate correlation (r = 0.54), and the "Auckland is top-25% for quality of life" claim was corrected to reflect its actual 34th-percentile ranking in this dataset.
+- **The Data Story findings were fact-checked against the real dataset**, not written from assumption. Several original hypotheses turned out to be wrong or imprecise once checked — for example, the "internet speed has no correlation with cost" hypothesis was revised after finding a real moderate correlation (r = 0.54).
 - **The NZ visa accessibility list is a representative, manually-curated list**, not an exhaustive official source — treat it as broadly indicative rather than authoritative for actual visa planning.
-- **Automated republishing to Tableau Public isn't possible** with free tooling (see above) — data refresh is automated, publishing the updated workbook is a 2-minute manual step.
+- **Full automation isn't possible with free tooling, and that's documented rather than hidden.** GitHub Actions can't run the Numbeo scraper (its IP ranges are blocked - confirmed by testing, not assumed) and Tableau Public doesn't support command-line republishing. Both the data refresh and the dashboard republish are manual steps, done locally (see "Keeping the data current" above).
 
 ## Stack
 
-Python (requests, BeautifulSoup, pandas, geopy) for the data pipeline · GitHub Actions for scheduled data refresh · Tableau Public for the dashboard and free permanent hosting.
+Python (requests, BeautifulSoup, pandas, geopy) for the data pipeline · GitHub Actions available for manual/local-runner use · Tableau Public for the dashboard and free permanent hosting.
