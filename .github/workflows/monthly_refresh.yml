@@ -5,6 +5,9 @@ on:
     - cron: '0 0 1 * *'  # 1st of every month at midnight UTC
   workflow_dispatch:       # allows manual trigger from the Actions tab
 
+permissions:
+  contents: write   # needed so the final 'git push' step can commit back to the repo
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
