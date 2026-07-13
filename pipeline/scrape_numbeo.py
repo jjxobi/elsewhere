@@ -1,8 +1,26 @@
 """
 scrape_numbeo.py
 
-Scrapes Numbeo's public rankings pages and saves one CSV per index,
-plus a combined raw CSV, into data/raw/.
+Scrapes Numbeo's public rankings pages (cost of living, quality of life,
+crime/safety, healthcare, pollution, traffic) and saves one CSV per
+index, plus a combined raw CSV, into data/raw/.
+
+Numbeo's rankings pages return a single HTML table containing ALL cities
+for that index in one request — so this is 6 requests total, not
+one-request-per-city. Be polite: we sleep between requests and set a
+real User-Agent.
+
+Usage:
+    python pipeline/scrape_numbeo.py
+
+Output:
+    data/raw/numbeo_cost_of_living.csv
+    data/raw/numbeo_quality_of_life.csv
+    data/raw/numbeo_safety.csv
+    data/raw/numbeo_healthcare.csv
+    data/raw/numbeo_pollution.csv
+    data/raw/numbeo_traffic.csv
+    data/raw/numbeo_combined.csv   (all six, long format)
 """
 
 import io
@@ -14,16 +32,24 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
 log = logging.getLogger(__name__)
 
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-    )
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://www.numbeo.com/cost-of-living/",
+    "Connection": "keep-alive",
 }
 
+# Each entry: (index_name, url)
 RANKING_PAGES = {
     "cost_of_living": "https://www.numbeo.com/cost-of-living/rankings_current.jsp",
     "quality_of_life": "https://www.numbeo.com/quality-of-life/rankings_current.jsp",
@@ -34,12 +60,13 @@ RANKING_PAGES = {
 }
 
 RAW_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
-REQUEST_DELAY_SECONDS = 3
+REQUEST_DELAY_SECONDS = 3  # politeness delay between requests
 MAX_RETRIES = 3
 RETRY_BACKOFF_SECONDS = 5
 
 
 def fetch_page(url: str) -> str:
+    """Fetch a URL with retries and return raw HTML text."""
     last_exc = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
@@ -48,51 +75,82 @@ def fetch_page(url: str) -> str:
             return resp.text
         except requests.RequestException as exc:
             last_exc = exc
-            log.warning("Attempt %d/%d failed for %s: %s", attempt, MAX_RETRIES, url, exc)
+            log.warning(
+                "Attempt %d/%d failed for %s: %s", attempt, MAX_RETRIES, url, exc
+            )
             if attempt < MAX_RETRIES:
                 time.sleep(RETRY_BACKOFF_SECONDS * attempt)
     raise RuntimeError(f"Failed to fetch {url} after {MAX_RETRIES} attempts") from last_exc
 
 
 def extract_table(html: str) -> pd.DataFrame:
+    """
+    Extract the rankings table from a Numbeo page.
+
+    Numbeo's markup changes over time. The most reliable anchor is the
+    <td class="cityOrCountryInIndicesTable"> cell that appears in every
+    row of the rankings table (each contains a link to that city's page).
+    We find the table that CONTAINS such a cell, rather than relying on
+    a specific table id/class, which has proven less stable.
+    """
     soup = BeautifulSoup(html, "html.parser")
 
     marker_cell = soup.find("td", {"class": "cityOrCountryInIndicesTable"})
     table = marker_cell.find_parent("table") if marker_cell else None
 
     if table is None:
-        table = soup.find("table", {"id": "cityRankingTable"}) or soup.find("table", {"id": "t2"})
+        # Older/alternate markup fallback
+        table = soup.find("table", {"id": "cityRankingTable"}) or soup.find(
+            "table", {"id": "t2"}
+        )
 
     if table is not None:
         dfs = pd.read_html(io.StringIO(str(table)))
         if dfs:
             return dfs[0]
 
+    # Last resort: pick the largest table on the page by row count
     all_tables = pd.read_html(io.StringIO(html))
     if not all_tables:
         raise ValueError("No tables found on page")
     largest = max(all_tables, key=lambda df: df.shape[0])
-    log.warning("Used fallback largest table (%d rows) — verify columns look sane.", largest.shape[0])
+    log.warning(
+        "Known table markers not found — used fallback (largest table, %d rows). "
+        "Numbeo may have changed their markup; verify columns look sane.",
+        largest.shape[0],
+    )
     return largest
 
 
 def clean_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalise column names: lowercase, underscores, strip whitespace."""
     df = df.copy()
-    df.columns = [str(c).strip().lower().replace(" ", "_").replace(".", "") for c in df.columns]
+    df.columns = [
+        str(c).strip().lower().replace(" ", "_").replace(".", "") for c in df.columns
+    ]
+    # Numbeo tables usually include an unwanted leading index/rank column
+    # named 'rank' or 'unnamed:_0' — keep rank if present, drop pure index junk
     df = df.loc[:, ~df.columns.str.startswith("unnamed")]
     return df
 
 
 def split_city_country(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Numbeo's 'city' column is usually formatted as 'City, Country'.
+    Split it into separate city and country columns for easier joining
+    later in build_master.py.
+    """
     df = df.copy()
     city_col = None
     for candidate in ("city", "city,_country", "town"):
         if candidate in df.columns:
             city_col = candidate
             break
+
     if city_col is None:
-        log.warning("Could not find a city column; columns were: %s", list(df.columns))
+        log.warning("Could not find a city column to split; columns were: %s", list(df.columns))
         return df
+
     split = df[city_col].astype(str).str.rsplit(",", n=1, expand=True)
     df["city"] = split[0].str.strip()
     if split.shape[1] > 1:
