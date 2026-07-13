@@ -1,15 +1,24 @@
+# Python
 __pycache__/
 *.pyc
 .venv/
 venv/
 env/
+
+# Env / secrets
 .env
+
+# Tableau temp files
 *.twbx.lock
 *.tds.lock
+*.twbr
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Raw scrape cache (keep only final master_data.csv committed)
 data/raw/
 
-output.txt
-
-output.txt
+# Debug output logs
+output*.txt
